@@ -35,8 +35,6 @@ public class ConsultationServiceImpl implements ConsultationService {
     public List<ConsultationResponseDto> getConsultations(String memberID) {
 
         try {
-
-
             if (memberID.isBlank()) {
                 throw new MethodArgumentNotValidException("Invalid request. ");
             }
@@ -75,7 +73,7 @@ public class ConsultationServiceImpl implements ConsultationService {
             return new CreateConsultationResponseDto(consultationId);
         }catch (IllegalArgumentException ex){
             log.error("Bad request: ",ex);
-            throw new MethodArgumentNotValidException("Invalid request"+ ex);
+            throw new MethodArgumentNotValidException("Invalid request.");
         }catch (HttpServerErrorException ex){
             throw new ServerException("Error processing request. Please try after some time.");
         }
